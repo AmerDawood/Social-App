@@ -83,7 +83,8 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTileViewConnect(text: 'Facebook',isSwitched: false),
             ListTileViewConnect(text: 'TikTok',isSwitched:false ),
             ListTileViewConnect(text: 'Snapchat',isSwitched:false ),
-            ListTileViewConnect(text: 'Instagram',isSwitched:false),
+            ListTileViewConnect(text: 'Instagram',
+                isSwitched:false),
             ListTileViewConnect(text: 'Twitter',isSwitched:false),
 
 
