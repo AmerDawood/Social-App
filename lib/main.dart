@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:social_app/auth/login.dart';
+import 'package:social_app/auth/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +17,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(),
+      debugShowCheckedModeBanner: false,
+      initialRoute:"/Login" ,
+      routes: {
+        "/Login":(context)=>const Login(),
+        "/Login_Screen":(context)=>const LoginScreen(),
+      },
     );
   }
 }
