@@ -84,8 +84,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ButtonInSigninPage(
                       title: 'Sign In',
                       function: () {
-                        Navigator.pushReplacementNamed(
-                            context, "/Login_Screen");
+                        Navigator.pushReplacementNamed(context, "/App_Screen");
+
                       },
                       backColor: const Color(0xffAC8AF7),
                       color: const Color(
@@ -102,7 +102,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           fontWeight: FontWeight.w100,
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                          },
                           child: const TextWidget(
                             text: 'Sign IN ',
                             color: Color(0xff6B7A9F),
