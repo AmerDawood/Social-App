@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:social_app/screens/auth/forget_password.dart';
 import 'package:social_app/screens/auth/login.dart';
 import 'package:social_app/screens/auth/login_screen.dart';
+import 'package:social_app/screens/auth/register_screen.dart';
 import 'package:social_app/screens/home/app.dart';
 
 
@@ -24,7 +26,9 @@ class _MyAppState extends State<MyApp> {
       routes: {
         "/Login":(context)=>const Login(),
         "/Login_Screen":(context)=>const LoginScreen(),
-        "/App_Screen" :(context)=>const AppScreen()
+        "/App_Screen" :(context)=>const AppScreen(),
+        "/register_screen" :(context)=>const RegisterScreen(),
+        "/forget_password" :(context)=>const ForgetPassword(),
       },
     );
   }

@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../auth/component/buttons_widget.dart';
-import '../auth/component/text_field_widget.dart';
-import '../auth/component/text_widget.dart';
+import 'component/buttons_widget.dart';
+import 'component/text_field_widget.dart';
+import 'component/text_widget.dart';
 
-
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class ForgetPassword extends StatefulWidget {
+  const ForgetPassword({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ForgetPassword> createState() => _ForgetPasswordState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ForgetPasswordState extends State<ForgetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Image.asset('images/simage.png'),
             Container(
-              height: 450,
+              height: 500,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
@@ -40,13 +39,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         TextWidget(
-                          text: "Sign In to ",
+                          text: "Reset Password ",
                           color: Color(0xff000000),
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                         TextWidget(
-                          text: "FeedApp",
+                          text: "By Email",
                           color: Color(0xffAC8AF7),
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -54,51 +53,32 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     const SizedBox(
-                      height: 33,
+                      height: 30,
                     ),
                     const TextFieldWidget(
                       enable: true,
                       labelText: 'Email',
                       textInputTypel: TextInputType.emailAddress,
                     ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    const TextFieldWidget(
-                      enable: true,
-                      labelText: 'Password',
-                      textInputTypel: TextInputType.visiblePassword,
-                    ),
+
                     const SizedBox(
                       height: 10,
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, "/forget_password");
-
-                      },
-                      child: const TextWidget(
-                        text: 'Forgot your Password?',
-                        color: Color(0xff6B7A9F),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w100,
-                      ),
-                    ),
                     ButtonInSigninPage(
-                      title: 'Sign In',
+                      title: 'Reset Password',
                       function: () {
-                        Navigator.pushReplacementNamed(context, "/App_Screen");
-
+                        Navigator.pushReplacementNamed(context, "/Login_Screen");
                       },
                       backColor: const Color(0xffAC8AF7),
                       color: const Color(
                         0xffFFFFFF,
                       ),
                     ),
+                    Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                      const TextWidget(
+                        const TextWidget(
                           text: 'Don\'t have an Account?',
                           color: Colors.grey,
                           fontSize: 16,
@@ -107,16 +87,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         TextButton(
                           onPressed: () {
                             Navigator.pushReplacementNamed(context, "/register_screen");
+
                           },
                           child: const TextWidget(
-                            text: 'Sign Up ',
+                            text: 'Sign IN ',
                             color: Color(0xff6B7A9F),
                             fontSize: 16,
                             fontWeight: FontWeight.w100,
                           ),
                         ),
-
-
                       ],
                     )
                   ],
