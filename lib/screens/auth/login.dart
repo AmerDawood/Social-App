@@ -34,15 +34,22 @@ class _LoginState extends State<Login> {
             height: 32,
           ),
 
-          ButtonInSigninPage(
-              title: 'Sign In',
-              function: () {
-                Navigator.pushReplacementNamed(context, "/Login_Screen");
-              },
-              backColor:const Color(0xffAC8AF7),
-              color:const Color(
-                0xffFFFFFF,
-              )),
+
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ButtonInSigninPage(
+                  title: 'Sign In',
+                  function: () {
+                    Navigator.pushReplacementNamed(context, "/Login_Screen");
+                  },
+                  backColor:const Color(0xffAC8AF7),
+                  color:const Color(
+                    0xffFFFFFF,
+                  )),
+            ],
+          ),
 
           ButtonInSigninPage(
               title: 'Sign In With Gmail',

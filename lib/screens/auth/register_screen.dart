@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../auth/component/buttons_widget.dart';
-import '../auth/component/text_field_widget.dart';
-import '../auth/component/text_widget.dart';
+import 'component/buttons_widget.dart';
+import 'component/text_field_widget.dart';
+import 'component/text_widget.dart';
 
-
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             Image.asset('images/simage.png'),
             Container(
-              height: 450,
+              height: 600,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
@@ -40,13 +39,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: const [
                         TextWidget(
-                          text: "Sign In to ",
+                          text: "Sign Up to ",
                           color: Color(0xff000000),
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                         TextWidget(
-                          text: "FeedApp",
+                          text: "SpeedApp",
                           color: Color(0xffAC8AF7),
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -54,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     const SizedBox(
-                      height: 33,
+                      height: 30,
                     ),
                     const TextFieldWidget(
                       enable: true,
@@ -62,7 +61,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       textInputTypel: TextInputType.emailAddress,
                     ),
                     const SizedBox(
-                      height: 24,
+                      height: 20,
+                    ),
+                    const TextFieldWidget(
+                      enable: true,
+                      labelText: 'Email',
+                      textInputTypel: TextInputType.emailAddress,
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                     const TextFieldWidget(
                       enable: true,
@@ -72,22 +79,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(
                       height: 10,
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, "/forget_password");
-
-                      },
-                      child: const TextWidget(
-                        text: 'Forgot your Password?',
-                        color: Color(0xff6B7A9F),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w100,
-                      ),
-                    ),
                     ButtonInSigninPage(
-                      title: 'Sign In',
+                      title: 'Sign Up',
                       function: () {
-                        Navigator.pushReplacementNamed(context, "/App_Screen");
+                        Navigator.pushReplacementNamed(context, "/register_screen");
 
                       },
                       backColor: const Color(0xffAC8AF7),
@@ -98,25 +93,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                      const TextWidget(
-                          text: 'Don\'t have an Account?',
+                        const TextWidget(
+                          text: 'Dont have an Account?',
                           color: Colors.grey,
                           fontSize: 16,
                           fontWeight: FontWeight.w100,
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.pushReplacementNamed(context, "/register_screen");
+                            Navigator.pushReplacementNamed(context, "/Login_Screen");
                           },
                           child: const TextWidget(
-                            text: 'Sign Up ',
+                            text: 'Sign IN ',
                             color: Color(0xff6B7A9F),
                             fontSize: 16,
                             fontWeight: FontWeight.w100,
                           ),
                         ),
-
-
                       ],
                     )
                   ],

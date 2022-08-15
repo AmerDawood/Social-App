@@ -28,7 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
         actions: [
           IconButton(
-            onPressed: (){},
+            onPressed: (){
+              Navigator.pushReplacementNamed(context, '/notification_screen');
+            },
             icon: Icon(Iconsax.notification,color: Colors.black,),
           ),
         ],
