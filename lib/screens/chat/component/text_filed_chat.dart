@@ -33,7 +33,9 @@ class TextFieldChat extends StatelessWidget {
                 child:Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      print('sldsf');
+                    },
                     icon: const Icon(Iconsax.send_1, size: 40),
                     color: Colors.grey,
                   ),
@@ -43,4 +45,5 @@ class TextFieldChat extends StatelessWidget {
         ),
     );
   }
+
 }

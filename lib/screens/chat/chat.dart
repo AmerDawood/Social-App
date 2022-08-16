@@ -41,7 +41,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
                   InkWell(
                     onTap: () {
-                      // Navigator.pushReplacementNamed(context, '/profile_screen');
+                      Navigator.pushReplacementNamed(context, '/profile_screen');
                     },
                     child: ClipOval(
                       child: Image.asset(
