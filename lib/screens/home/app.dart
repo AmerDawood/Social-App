@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:social_app/screens/chat/chat.dart';
 import '../../model/bn_screen.dart';
+import '../post/add_post.dart';
 import '../profile/profile_screen.dart';
 import '../search/search_screen.dart';
 import 'home_screen.dart';
@@ -18,7 +19,7 @@ class _AppScreenState extends State<AppScreen>{
   final List<BnScreen> _bnScreen = <BnScreen>[
     BnScreen(widget: HomeScreen(), title: 'home'),
     BnScreen(widget: SearchScreen(), title: 'search'),
-    BnScreen(widget: HomeScreen(), title: 'home'),
+    BnScreen(widget: AddPostScreen(), title: 'add-post'),
     BnScreen(widget: ChatScreen(), title: 'chat'),
     BnScreen(widget: ProfileScreen(), title: 'profile'),
   ];

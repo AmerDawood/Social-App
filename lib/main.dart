@@ -1,14 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:social_app/screens/auth/forget_password.dart';
 import 'package:social_app/screens/auth/login.dart';
 import 'package:social_app/screens/auth/login_screen.dart';
 import 'package:social_app/screens/auth/register_screen.dart';
 import 'package:social_app/screens/home/app.dart';
+import 'package:social_app/screens/home/home_screen.dart';
 import 'package:social_app/screens/notification/notification_screen.dart';
 import 'package:social_app/screens/profile/profile_screen.dart';
 
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -17,6 +21,7 @@ class MyApp extends StatefulWidget {
 
   @override
   State<MyApp> createState() => _MyAppState();
+
 }
 
 class _MyAppState extends State<MyApp> {
@@ -32,6 +37,7 @@ class _MyAppState extends State<MyApp> {
         "/register_screen" :(context)=>const RegisterScreen(),
         "/forget_password" :(context)=>const ForgetPassword(),
         "/notification_screen" :(context)=>const NotificationScreen(),
+        "/home_screen" :(context)=>const HomeScreen(),
         "/profile_screen" :(context)=>const ProfileScreen(),
       },
     );

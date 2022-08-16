@@ -19,6 +19,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       backgroundColor: HexColor("#FFFFFF"),
       appBar: AppBar(
         backgroundColor: HexColor("#FFFFFF"),
+        iconTheme: const IconThemeData(color: Color(0xff565656)),
+          centerTitle: true,
         elevation: 0,
         title: Text('Profile',
           style: TextStyle(

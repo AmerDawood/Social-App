@@ -33,9 +33,16 @@ class _ChatScreenState extends State<ChatScreen> {
                         // Navigator.pushReplacementNamed(context, 'App_Screen');
                       }, icon: const Icon(Iconsax.arrow_left_2)),
 
-                  ClipOval(
-                    child: Image.asset(
-                      'images/a1.png',
+                  InkWell(
+                    onTap: () {
+
+                      Navigator.pushNamed(
+                          context, "/profile_screen");
+                    },
+                    child: ClipOval(
+                      child: Image.asset(
+                        'images/a1.png',
+                      ),
                     ),
                   ),
 
