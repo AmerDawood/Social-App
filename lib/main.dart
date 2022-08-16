@@ -33,11 +33,8 @@ class _MyAppState extends State<MyApp> {
         "/register_screen" :(context)=>const RegisterScreen(),
         "/forget_password" :(context)=>const ForgetPassword(),
         "/notification_screen" :(context)=>const NotificationScreen(),
-<<<<<<< HEAD
         "/home_screen" :(context)=>const HomeScreen(),
-=======
         "/profile_screen" :(context)=>const ProfileScreen(),
->>>>>>> c7561c0d5b330de5bb74e6a3aa69a78114c22170
       },
     );
   }
