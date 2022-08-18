@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:social_app/fb_controller/fb_auth_controller.dart';
+import 'package:social_app/utils/helpers.dart';
 
 import 'component/buttons_widget.dart';
 import 'component/text_field_widget.dart';
@@ -11,7 +13,21 @@ class ForgetPassword extends StatefulWidget {
   State<ForgetPassword> createState() => _ForgetPasswordState();
 }
 
-class _ForgetPasswordState extends State<ForgetPassword> {
+class _ForgetPasswordState extends State<ForgetPassword> with Helpers {
+  late TextEditingController _emailTextController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _emailTextController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailTextController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +71,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     const SizedBox(
                       height: 30,
                     ),
-                    const TextFieldWidget(
+                     TextFieldWidget(
+                      controller: _emailTextController,
                       enable: true,
                       labelText: 'Email',
                       textInputTypel: TextInputType.emailAddress,
@@ -67,7 +84,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     ButtonInSigninPage(
                       title: 'Reset Password',
                       function: () {
-                        Navigator.pushReplacementNamed(context, "/Login_Screen");
+                        _preformForget();
                       },
                       backColor: const Color(0xffAC8AF7),
                       color: const Color(
@@ -107,4 +124,26 @@ class _ForgetPasswordState extends State<ForgetPassword> {
       ),
     );
   }
+  Future<void> _preformForget() async {
+    if (checkData()) {
+      await forget();
+    }
+  }
+  bool checkData() {
+    if (_emailTextController.text.isNotEmpty ) {
+      return true;
+    }
+    showSnackBar(context: context, message: 'Enter required data',error: true);
+    return false;
+  }
+
+  Future<void> forget() async {
+    bool status=await FbAuthController().resetPassword(email:_emailTextController.text, context: context);
+    if(status){
+      Navigator.pushReplacementNamed(context, "/Login_Screen");
+    }
+
+  }
+
 }
+

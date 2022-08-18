@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:social_app/fb_controller/fb_auth_controller.dart';
+import 'package:social_app/utils/helpers.dart';
 
 import '../auth/component/buttons_widget.dart';
 import '../auth/component/text_field_widget.dart';
@@ -12,7 +14,24 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> with Helpers {
+  late TextEditingController _emailTextController;
+  late TextEditingController _passwordTextController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _emailTextController = TextEditingController();
+    _passwordTextController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _passwordTextController.dispose();
+    _emailTextController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +75,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(
                       height: 33,
                     ),
-                    const TextFieldWidget(
+                     TextFieldWidget(
+                      controller: _emailTextController,
                       enable: true,
                       labelText: 'Email',
                       textInputTypel: TextInputType.emailAddress,
@@ -64,7 +84,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(
                       height: 24,
                     ),
-                    const TextFieldWidget(
+                     TextFieldWidget(
+                       controller: _passwordTextController,
                       enable: true,
                       labelText: 'Password',
                       textInputTypel: TextInputType.visiblePassword,
@@ -87,8 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ButtonInSigninPage(
                       title: 'Sign In',
                       function: () {
-                        Navigator.pushReplacementNamed(context, "/App_Screen");
-
+                        _preformLogin();
                       },
                       backColor: const Color(0xffAC8AF7),
                       color: const Color(
@@ -128,4 +148,28 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+  Future<void> _preformLogin() async {
+    if (checkData()) {
+      await _login();
+    }
+  }
+
+  bool checkData() {
+    if (_emailTextController.text.isNotEmpty &&
+        _passwordTextController.text.isNotEmpty) {
+      return true;
+    }
+    showSnackBar(context: context, message: 'Enter required data',error: true);
+    return false;
+  }
+
+  Future<void> _login() async {
+    bool status=await FbAuthController().signIn(context: context, email: _emailTextController.text, password: _passwordTextController.text);
+    if(status){
+      Navigator.pushReplacementNamed(context, "/App_Screen");
+    }
+
+  }
+
 }
+

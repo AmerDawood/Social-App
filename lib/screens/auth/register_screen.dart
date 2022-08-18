@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:social_app/fb_controller/fb_auth_controller.dart';
+import 'package:social_app/utils/helpers.dart';
 
 import 'component/buttons_widget.dart';
 import 'component/text_field_widget.dart';
@@ -11,7 +13,27 @@ class RegisterScreen extends StatefulWidget {
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegisterScreenState extends State<RegisterScreen> with   Helpers{
+  late TextEditingController _emailTextController;
+  late TextEditingController _passwordTextController;
+  late TextEditingController _fullNameTextController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _emailTextController = TextEditingController();
+    _passwordTextController = TextEditingController();
+    _fullNameTextController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _passwordTextController.dispose();
+    _emailTextController.dispose();
+    _fullNameTextController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +77,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     const SizedBox(
                       height: 30,
                     ),
-                    const TextFieldWidget(
+                     TextFieldWidget(
+                      controller: _fullNameTextController,
+                      enable: true,
+                      labelText: 'Full Name',
+                      textInputTypel: TextInputType.text,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                     TextFieldWidget(
+                       controller: _emailTextController,
                       enable: true,
                       labelText: 'Email',
                       textInputTypel: TextInputType.emailAddress,
@@ -63,15 +95,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     const SizedBox(
                       height: 20,
                     ),
-                    const TextFieldWidget(
-                      enable: true,
-                      labelText: 'Email',
-                      textInputTypel: TextInputType.emailAddress,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const TextFieldWidget(
+                     TextFieldWidget(
+                       controller: _passwordTextController,
                       enable: true,
                       labelText: 'Password',
                       textInputTypel: TextInputType.visiblePassword,
@@ -81,9 +106,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     ButtonInSigninPage(
                       title: 'Sign Up',
-                      function: () {
-                        Navigator.pushReplacementNamed(context, "/register_screen");
-
+                      function: () async {
+                        await _preformRegister();
                       },
                       backColor: const Color(0xffAC8AF7),
                       color: const Color(
@@ -120,5 +144,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
     );
+  }
+  Future<void> _preformRegister() async {
+    if (checkData()) {
+      await register();
+    }
+  }
+
+  bool checkData() {
+    if (_emailTextController.text.isNotEmpty &&
+        _passwordTextController.text.isNotEmpty&&
+        _fullNameTextController.text.isNotEmpty
+
+    ) {
+      return true;
+    }showSnackBar(context: context, message: 'Enter required data',error: true);
+
+    return false;
+  }
+
+  Future<void> register() async {
+    bool status=await FbAuthController().createAccount(context: context, email: _emailTextController.text, password: _passwordTextController.text);
+    if(status){
+      Navigator.pushReplacementNamed(context, "/Login_Screen");
+    }
+
   }
 }

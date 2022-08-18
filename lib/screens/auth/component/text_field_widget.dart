@@ -5,15 +5,18 @@ class TextFieldWidget extends StatelessWidget {
     required this.enable,
     required this.labelText,
     required this.textInputTypel,
+    required this.controller,
   }) : super(key: key);
 
   final String labelText;
   final bool enable;
   final TextInputType textInputTypel;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller:controller ,
         keyboardType: textInputTypel,
         decoration: InputDecoration(
           hintText:labelText ,
