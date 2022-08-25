@@ -6,12 +6,15 @@ import 'package:social_app/screens/auth/login_screen.dart';
 import 'package:social_app/screens/auth/register_screen.dart';
 import 'package:social_app/screens/home/app.dart';
 import 'package:social_app/screens/home/home_screen.dart';
+import 'package:social_app/screens/launch_screen.dart';
 import 'package:social_app/screens/notification/notification_screen.dart';
 import 'package:social_app/screens/profile/profile_screen.dart';
+import 'package:social_app/shared_pref/shared_pref_controller.dart';
 
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await SharedPrefController().initPreferences();
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
@@ -29,8 +32,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute:"/Login" ,
+      initialRoute:"/launch" ,
       routes: {
+        "/launch":(context)=>const Launch_Screen(),
         "/Login":(context)=>const Login(),
         "/Login_Screen":(context)=>const LoginScreen(),
         "/App_Screen" :(context)=>const AppScreen(),
